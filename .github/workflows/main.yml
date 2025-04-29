@@ -2,7 +2,7 @@ name: PHP FTP Deploy to Subdomain
 
 on:
   push:
-    branches: [ "main" ]  # Change this if you deploy from another branch
+    branches: [ "Master" ]  # Change this if you deploy from another branch
 
 jobs:
   deploy:
