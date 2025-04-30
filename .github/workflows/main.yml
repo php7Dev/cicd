@@ -20,11 +20,12 @@ jobs:
       - name: Lint PHP files
         run: find . -name "*.php" -exec php -l {} \;
 
-      - name: Upload to FTP server
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Upload to SFTP server
+        uses: pressidium/lftp-mirror-action@v1.1.0
         with:
-          server: ${{ secrets.FTP_HOST }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          host: ${{ secrets.FTP_HOST }}
+          port: ${{ secrets.SFTP_PORT }}
+          user: ${{ secrets.FTP_USERNAME }}
+          pass: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
           server-dir: /public_html/
