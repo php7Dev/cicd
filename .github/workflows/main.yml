@@ -20,12 +20,11 @@ jobs:
       - name: Lint PHP files
         run: find . -name "*.php" -exec php -l {} \;
 
-      - name: Upload to SFTP server
-        uses: appleboy/scp-action@v0.1.7
+      - name: Upload to FTP server
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.FTP_HOST }}
+          server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: ${{ secrets.SFTP_PORT }}
-          source: "./*"
-          target: "/public_html/"
+          local-dir: ./
+          server-dir: /public_html/
